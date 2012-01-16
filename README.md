@@ -26,7 +26,7 @@ In order to create gists with ObjectiveGist, you must provide an Oauth access to
 
 Once you have an access token, creating a gist is easy as pie:
 
-    GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts 1+1"]];
+    GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts 1+1"];
     Gist* newGist = [[Gist alloc] init];
     newGist.files = [NSArray arrayWithObject:gistFile];
     [newGist publish:@"access token here"];
@@ -34,7 +34,7 @@ Once you have an access token, creating a gist is easy as pie:
 You can also create a gist from a file:
 
     NSString* fileContents = [NSString stringWithContentsOfFile:@"/Users/chris/code.rb" encoding:NSUTF8StringEncoding error:nil];
-    GistFile* gistFile = [[GistFile alloc] initWithContent:fileContents]];
+    GistFile* gistFile = [[GistFile alloc] initWithContent:fileContents];
     Gist* newGist = [[Gist alloc] init];
     newGist.files = [NSArray arrayWithObject:gistFile];
     [newGist publish:@"access token here"];
