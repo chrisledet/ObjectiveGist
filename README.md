@@ -20,7 +20,7 @@ View the Gist's files and show its contents:
         NSLog(@"Content: %@", file.content);
     }
 
-### Creating Gists
+## Creating Gists
 
 In order to create gists with ObjectiveGist, you must provide an Oauth access token that's supplied by Github. You can read about how Github uses [Oauth here][oauth]. The access token allows you to make requests to the API on a behalf of a user.
 
