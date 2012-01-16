@@ -59,7 +59,8 @@
 @property (nonatomic, assign) BOOL isFork;
 
 - (id)initFromDictionary:(NSDictionary*)gistDictionary;
+- (id)initWithId:(NSString*)gistId;
 
-+ (id)fetchGist:(NSString*)gistId;
+- (void)publish:(NSString*)accessToken;
 
 @end

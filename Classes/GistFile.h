@@ -40,6 +40,10 @@
 @property (nonatomic, retain) NSString* content;
 @property (nonatomic, retain) NSString* language;
 
--(id)initFromDictionary:(NSDictionary*)gistFileDictionary;
+/* initializers */
+- (id)initFromDictionary:(NSDictionary*)gistFileDictionary;
+- (id)initWithContent:(NSString*)content;
+- (id)initWithContent:(NSString*)content language:(NSString*)language;
+- (id)initWithContent:(NSString*)content language:(NSString*)language filename:(NSString*)filename;
 
 @end

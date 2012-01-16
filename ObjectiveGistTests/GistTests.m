@@ -23,27 +23,29 @@
 //  THE SOFTWARE.
 
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "ObjectiveGist.h"
-
-
-NSString* const kGistId = @"1316614";
-NSString* const kForkedGistId = @"1618481";
+#import "TestHelper.h"
 
 @interface GistTests : SenTestCase {
     Gist* gist;
+    NSString* gistId;
+    NSString* forkedGistId;
 }
 
 @property (nonatomic, retain) Gist* gist;
+@property (nonatomic, retain) NSString* gistId;
+@property (nonatomic, retain) NSString* forkedGistId;
 
 @end
 
 @implementation GistTests
 
-@synthesize gist;
+@synthesize gist, gistId, forkedGistId;
 
-- (void)setUp {
-    gist = [Gist fetchGist:kGistId];
+- (void)setUp
+{
+    gistId = @"1316614";
+    forkedGistId = @"1618481";
+    gist = [[Gist alloc] initWithId:gistId];
 }
 
 - (void)testNumberOfComments
@@ -65,25 +67,25 @@ NSString* const kForkedGistId = @"1618481";
 
 - (void)testGitPushURL
 {
-    NSURL* gitPushUrl = [NSURL URLWithString:[NSString stringWithFormat:@"git@gist.github.com:%@.git", kGistId]];
+    NSURL* gitPushUrl = [NSURL URLWithString:[NSString stringWithFormat:@"git@gist.github.com:%@.git", gistId]];
     STAssertEqualObjects(gitPushUrl, gist.gitPushURL, @"gitPushURL should match");
 }
 
 - (void)testGitPullURL
 {
-    NSURL* gitPullUrl = [NSURL URLWithString:[NSString stringWithFormat:@"git://gist.github.com/%@.git", kGistId]];
+    NSURL* gitPullUrl = [NSURL URLWithString:[NSString stringWithFormat:@"git://gist.github.com/%@.git", gistId]];
     STAssertEqualObjects(gitPullUrl, gist.gitPullURL, @"gitPullUrl should match");
 }
 
 - (void)testHtmlURL
 {
-    NSURL* htmlURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://gist.github.com/%@", kGistId]];
+    NSURL* htmlURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://gist.github.com/%@", gistId]];
     STAssertEqualObjects(htmlURL, gist.htmlURL, @"htmlURL should match");
 }
 
 - (void)testApiURL
 {
-    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/gists/%@", kGistId]];
+    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/gists/%@", gistId]];
     STAssertEqualObjects(apiURL, gist.apiURL, @"apiURL should match");
 }
 
@@ -107,20 +109,23 @@ NSString* const kForkedGistId = @"1618481";
     STAssertFalse(gist.isFork, @"Gist should is not a fork");
 }
 
-- (void)testGistFilesFromGist
-{
-    GistFile* gistFile = [gist.files objectAtIndex:0];
-    NSURL* rawURL = [NSURL URLWithString:@"https://gist.github.com/raw/1316614/ca9ab858d3b9a428bdb2a45c56c1502d6e1f4ab9/hide.m"];
-    STAssertEqualObjects(@"hide.m", gistFile.filename, @"Gist filename should be set");
-    STAssertEqualObjects(@"Objective-C", gistFile.language, @"Gist filename should be set");
-    STAssertTrue(144 == gistFile.filesize, @"Gist filesize should be set");
-    STAssertEqualObjects(rawURL, gistFile.rawURL, @"Gist raw URL should be set");
-}
-
 - (void)testForkedGist
 {
-    Gist* forkedGist = [Gist fetchGist:kForkedGistId];
+    Gist* forkedGist = [[Gist alloc] initWithId:forkedGistId];
     STAssertTrue(forkedGist.isFork, @"Gist is forked");
+}
+
+- (void)testPublish
+{
+    NSString* path = @"ObjectiveGistTests/.access_token";
+    NSString* accessToken = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    [gist publish:accessToken];
+    
+    STAssertNotNil(gist.gistId, @"Gist should be created");
+    
+    [path release];
+    [accessToken release];
 }
 
 @end

@@ -59,6 +59,7 @@
 		839D13D314C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; };
 		839D13D414C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; };
 		839D13D514C17ADC005F2D99 /* NSObject+SBJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13B014C17ADB005F2D99 /* NSObject+SBJson.h */; };
+		83CA2CDC14C3CC9B00AD7D0C /* GistFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		839D13AE14C17ADB005F2D99 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
 		839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		839D13B014C17ADB005F2D99 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistFileTests.m; sourceTree = "<group>"; };
+		83CA2CDD14C3CD2200AD7D0C /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +180,9 @@
 		839D134314C1668B005F2D99 /* ObjectiveGistTests */ = {
 			isa = PBXGroup;
 			children = (
+				83CA2CDD14C3CD2200AD7D0C /* TestHelper.h */,
 				839D137B14C17503005F2D99 /* GistTests.m */,
+				83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */,
 				839D137714C16ECD005F2D99 /* Resources */,
 				839D134414C1668B005F2D99 /* Supporting Files */,
 			);
@@ -407,6 +412,7 @@
 				839D13CD14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */,
 				839D13D014C17ADB005F2D99 /* SBJsonParser.m in Sources */,
 				839D13D414C17ADB005F2D99 /* NSObject+SBJson.m in Sources */,
+				83CA2CDC14C3CC9B00AD7D0C /* GistFileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
