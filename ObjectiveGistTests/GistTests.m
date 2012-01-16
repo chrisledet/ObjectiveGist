@@ -27,7 +27,8 @@
 #import "ObjectiveGist.h"
 
 
-NSString * const kGistId = @"1316614";
+NSString* const kGistId = @"1316614";
+NSString* const kForkedGistId = @"1618481";
 
 @interface GistTests : SenTestCase {
     Gist* gist;
@@ -101,6 +102,11 @@ NSString * const kGistId = @"1316614";
     STAssertEqualObjects(@"chrisledet", gist.userLogin, @"userlogin should match");
 }
 
+- (void)testIsFork
+{
+    STAssertFalse(gist.isFork, @"Gist should is not a fork");
+}
+
 - (void)testGistFilesFromGist
 {
     GistFile* gistFile = [gist.files objectAtIndex:0];
@@ -109,6 +115,12 @@ NSString * const kGistId = @"1316614";
     STAssertEqualObjects(@"Objective-C", gistFile.language, @"Gist filename should be set");
     STAssertTrue(144 == gistFile.filesize, @"Gist filesize should be set");
     STAssertEqualObjects(rawURL, gistFile.rawURL, @"Gist raw URL should be set");
+}
+
+- (void)testForkedGist
+{
+    Gist* forkedGist = [Gist fetchGist:kForkedGistId];
+    STAssertTrue(forkedGist.isFork, @"Gist is forked");
 }
 
 @end

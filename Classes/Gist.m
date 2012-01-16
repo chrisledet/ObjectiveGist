@@ -37,7 +37,7 @@
 @implementation Gist
 
 @synthesize apiURL, htmlURL, gitPullURL, gitPushURL, createdAt, updatedAt, files;
-@synthesize gistId, gistDescription, isPublic, numberOfComments, userLogin;
+@synthesize gistId, gistDescription, isPublic, numberOfComments, userLogin, isFork;
 
 - (void)dealloc
 {
@@ -65,7 +65,7 @@
 - (id)initFromDictionary:(NSDictionary*)gistDictionary;
 {
     self = [super init];
-    
+
     if (self) {
         gistId = [gistDictionary objectForKey:@"id"];
         gistDescription = [gistDictionary objectForKey:@"description"];
@@ -79,6 +79,7 @@
         gitPullURL = [NSURL URLWithString:[gistDictionary objectForKey:@"git_pull_url"]];
         gitPushURL = [NSURL URLWithString:[gistDictionary objectForKey:@"git_push_url"]];
         files  = [self setGistFilesFromDictionary:[gistDictionary objectForKey:@"files"]];
+        isFork = [gistDictionary objectForKey:@"fork_of"] != nil;
     }
     
     return self;

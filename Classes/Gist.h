@@ -41,6 +41,7 @@
     NSDate* updateAt;
     NSArray* files;
     NSString* userLogin;
+    BOOL isFork;
 }
 
 @property (nonatomic, retain) NSURL* apiURL;
@@ -55,6 +56,7 @@
 @property (nonatomic, retain) NSDate* updatedAt;
 @property (nonatomic, retain) NSArray* files;
 @property (nonatomic, retain) NSString* userLogin;
+@property (nonatomic, assign) BOOL isFork;
 
 - (id)initFromDictionary:(NSDictionary*)gistDictionary;
 
