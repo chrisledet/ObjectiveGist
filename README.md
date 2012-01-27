@@ -8,36 +8,40 @@ Just copy the files from the `Classes` and `Library` directories into your Xcode
 
 ## Basic Usage
 
+### Reading Gists
+
 Fetch a Gist from Github:
 
-    NSString* gistId = @"1316614";
-    Gist* gist = [[Gist alloc] initWithId:gistId];
+    Gist* gist = [[Gist alloc] initWithId:@"gist id here"];
 
-View the Gist's files and show its contents:
+Now iterate through the files and show its contents:
 
     NSArray* gistFiles = [gist files];
     for (GistFile* file in gistFiles) {
         NSLog(@"Content: %@", file.content);
     }
 
-## Creating Gists
 
-In order to create gists with ObjectiveGist, you must provide an Oauth access token that's supplied by Github. You can read about how Github uses [Oauth here][oauth]. The access token allows you to make requests to the API on a behalf of a user.
+## Write operations
+
+In order to create or delete gists with ObjectiveGist, you must provide an Oauth access token that's supplied by Github. You can read about how Github uses [Oauth here][oauth]. The access token allows you to make requests to the API on a behalf of a user.
+
+### Creating Gists
 
 Once you have an access token, creating a gist is easy as pie:
 
     GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts 1+1"];
     Gist* newGist = [[Gist alloc] init];
     newGist.files = [NSArray arrayWithObject:gistFile];
+    newGist.gistDescription = @"print sum of 1+1 in Ruby";
     [newGist publish:@"access token here"];
 
-You can also create a gist from a file:
+### Deleting Gists
 
-    NSString* fileContents = [NSString stringWithContentsOfFile:@"/Users/chris/code.rb" encoding:NSUTF8StringEncoding error:nil];
-    GistFile* gistFile = [[GistFile alloc] initWithContent:fileContents];
-    Gist* newGist = [[Gist alloc] init];
-    newGist.files = [NSArray arrayWithObject:gistFile];
-    [newGist publish:@"access token here"];
+Destroying a gist will permanetely remove it from Github.
+
+    Gist* gist = [[Gist alloc] initWithId:@"gist id here"];
+    [gist destroy:@"access token here"];
 
 ## Tests
 

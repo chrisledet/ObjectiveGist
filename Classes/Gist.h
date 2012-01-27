@@ -58,9 +58,10 @@
 @property (nonatomic, retain) NSString* userLogin;
 @property (nonatomic, assign) BOOL isFork;
 
-- (id)initFromDictionary:(NSDictionary*)gistDictionary;
 - (id)initWithId:(NSString*)gistId;
+- (id)initWithFiles:(NSArray*)files;
 
 - (void)publish:(NSString*)accessToken;
+- (void)destroy:(NSString*)accessToken;
 
 @end

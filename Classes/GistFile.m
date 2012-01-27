@@ -24,6 +24,8 @@
 
 #import "GistFile.h"
 
+NSString* const kDefaultFilename = @"untitled";
+
 @implementation GistFile
 
 @synthesize filename, filesize, rawURL, content, language;
@@ -35,6 +37,14 @@
     [content release];
     [language release];
     [super dealloc];
+}
+
+- (id)initWithContent:(NSString*)aContent;
+{
+    NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
+    [dictionary setValue:kDefaultFilename forKey:@"filename"];
+    [dictionary setValue:aContent forKey:@"content"];
+    return [self initFromDictionary:dictionary];
 }
 
 - (id)initFromDictionary:(NSDictionary*)gistFileDictionary
@@ -50,25 +60,6 @@
     }
     
     return self;
-}
-
-- (id)initWithContent:(NSString*)aContent
-{
-    NSDictionary* dictionary = [NSDictionary dictionaryWithObject:aContent forKey:@"content"];
-    return [self initFromDictionary:dictionary];
-}
-
-- (id)initWithContent:(NSString*)aContent language:(NSString*)aLanguage
-{
-    NSDictionary* dictionary = [NSDictionary dictionaryWithObjectsAndKeys:content, @"content", language, @"language", nil];
-    return [self initFromDictionary:dictionary];
-}
-
-- (id)initWithContent:(NSString*)aContent language:(NSString*)aLanguage filename:(NSString*)aFilename
-{
-    NSDictionary* dictionary =
-        [NSDictionary dictionaryWithObjectsAndKeys:aContent, @"content", aLanguage, @"language", aFilename, @"filename",nil];
-    return [self initFromDictionary:dictionary];
 }
 
 @end

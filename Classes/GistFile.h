@@ -24,6 +24,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const kDefaultFilename;
+
 @interface GistFile : NSObject {
 
 @private
@@ -41,9 +43,7 @@
 @property (nonatomic, retain) NSString* language;
 
 /* initializers */
-- (id)initFromDictionary:(NSDictionary*)gistFileDictionary;
 - (id)initWithContent:(NSString*)content;
-- (id)initWithContent:(NSString*)content language:(NSString*)language;
-- (id)initWithContent:(NSString*)content language:(NSString*)language filename:(NSString*)filename;
+- (id)initFromDictionary:(NSDictionary*)gistFileDictionary;
 
 @end

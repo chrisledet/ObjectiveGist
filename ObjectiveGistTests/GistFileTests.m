@@ -47,6 +47,12 @@
     gist = [[Gist alloc] initWithId:gistId];
 }
 
+- (void)testDefaultFilenameIsUntitled
+{
+    GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts \"Hello World\""];
+    STAssertEqualObjects(kDefaultFilename, gistFile.filename, @"Default filename should be untitled");
+}
+
 - (void)testGistFilesFromGist
 {
     GistFile* gistFile = [gist.files objectAtIndex:0];

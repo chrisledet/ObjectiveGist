@@ -26,12 +26,16 @@
 
 @interface Gist()
 
+/* private initializers */
+- (id)initFromDictionary:(NSDictionary*)gistDictionary;
+
 /* Instance methods */
 - (NSArray*)setGistFilesFromDictionary:(NSDictionary*)dictionary;
 - (void)mapDictionary:(NSDictionary*)dictionary;
 
 /* Class methods */
 - (NSURL*)gistApiURL:(NSString*)gistId;
+- (NSURL*)deleteGistApiURL:(NSString*)accessToken;
 - (NSURL*)createGistApiURL:(NSString*)accessToken;
 - (NSData*) sendHTTPRequest:(NSURL*)url withHTTPBody:(NSData*)httpData AndHTTPMethod:(NSString*)httpMethod;
 
@@ -65,6 +69,13 @@
     return [[Gist alloc] initFromDictionary:jsonDictionary];
 }
 
+- (id)initWithFiles:(NSArray *)aFiles
+{
+    self = [super init];
+    if (self) files = aFiles;
+    return self;
+}
+
 - (id)initFromDictionary:(NSDictionary*)gistDictionary;
 {
     self = [super init];
@@ -72,7 +83,7 @@
     if (self) {
         [self mapDictionary:gistDictionary];
     }
-    
+
     return self;
 }
 
@@ -96,22 +107,35 @@
     NSDictionary* jsonDictionary = [parser objectWithData:returnData];
     
     [self mapDictionary:jsonDictionary];
-
-    [jsonDictionary release];
+    
     [parser release];
     [returnData release];
+}
+
+- (void)destroy:(NSString*)accessToken
+{
+    [self sendHTTPRequest:[self deleteGistApiURL:accessToken] withHTTPBody:nil AndHTTPMethod:@"DELETE"];
 }
 
 /* Private methods */
 
 - (NSURL*)gistApiURL:(NSString*)aGistId
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/gists/%@", aGistId]];
+    return [NSURL URLWithString:
+                [NSString stringWithFormat:@"https://api.github.com/gists/%@", aGistId]];
+}
+
+- (NSURL*)deleteGistApiURL:(NSString*)accessToken
+{
+    NSLog(@"Posting to https://api.github.com/gists/%@?access_token=%@", gistId, accessToken);
+    return [NSURL URLWithString:
+                [NSString stringWithFormat:@"https://api.github.com/gists/%@?access_token=%@", gistId, accessToken]];
 }
 
 - (NSURL*)createGistApiURL:(NSString*)accessToken
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/gists?access_token=%@", accessToken]];
+    return [NSURL URLWithString:
+                [NSString stringWithFormat:@"https://api.github.com/gists?access_token=%@", accessToken]];
 }
 
 - (NSArray*)setGistFilesFromDictionary:(NSDictionary*)dictionary
@@ -122,7 +146,7 @@
         [tempGistFile addObject:gistFile];
         [gistFile release];
     }
-    return [[tempGistFile copy] autorelease];
+    return [tempGistFile autorelease];
 }
 
 - (NSData*)sendHTTPRequest:(NSURL*)url withHTTPBody:(NSData*)httpData AndHTTPMethod:(NSString*)httpMethod

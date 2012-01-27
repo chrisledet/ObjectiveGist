@@ -28,23 +28,33 @@
     Gist* gist;
     NSString* gistId;
     NSString* forkedGistId;
+    NSString* accessToken;
 }
 
 @property (nonatomic, retain) Gist* gist;
 @property (nonatomic, retain) NSString* gistId;
 @property (nonatomic, retain) NSString* forkedGistId;
+@property (nonatomic, retain) NSString* accessToken;
 
 @end
 
 @implementation GistTests
 
-@synthesize gist, gistId, forkedGistId;
+@synthesize gist, gistId, forkedGistId, accessToken;
+
+-(void)dealloc
+{
+    [accessToken release];
+    [gist release];
+    [super dealloc];
+}
 
 - (void)setUp
 {
     gistId = @"1316614";
     forkedGistId = @"1618481";
     gist = [[Gist alloc] initWithId:gistId];
+    accessToken = [NSString stringWithContentsOfFile:@"ObjectiveGistTests/.access_token" encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void)testNumberOfComments
@@ -116,15 +126,30 @@
 
 - (void)testPublish
 {
-    NSString* path = @"ObjectiveGistTests/.access_token";
-    NSString* accessToken = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    
-    [gist publish:accessToken];
-    
-    STAssertNotNil(gist.gistId, @"Gist should be created");
-    
-    [path release];
-    [accessToken release];
+    GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts 1+1"];
+    Gist* newGist = [[Gist alloc] initWithFiles:[NSArray arrayWithObject:gistFile]];
+    newGist.gistDescription = @"Test Gist";
+    newGist.isPublic = NO;
+    [newGist publish:accessToken];
+    STAssertNotNil(newGist.gistId, @"Gist should be created");
+}
+
+- (void)testDelete
+{
+    /* first create a private gist */
+    GistFile* gistFile = [[GistFile alloc] initWithContent:@"puts 1+1"];
+    Gist* newGist = [[Gist alloc] initWithFiles:[NSArray arrayWithObject:gistFile]];
+    newGist.gistDescription = @"Test Gist";
+    newGist.isPublic = NO;
+    [newGist publish:accessToken];
+    STAssertNotNil(newGist.gistId, @"Gist should be created");
+
+    /* then destroy it */
+    NSString* privateGistId = [newGist.gistId copy];
+    [newGist destroy:accessToken];
+    newGist = [[Gist alloc] initWithId:privateGistId];
+    [privateGistId release];
+    STAssertNil(newGist.gistId, @"Gist should be nil");
 }
 
 @end
