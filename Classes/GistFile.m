@@ -30,14 +30,6 @@ NSString* const kDefaultFilename = @"untitled";
 
 @synthesize filename, filesize, rawURL, content, language;
 
-- (void) dealloc
-{
-    [filename release];
-    [rawURL release];
-    [content release];
-    [language release];
-    [super dealloc];
-}
 
 - (id)initWithContent:(NSString*)aContent;
 {

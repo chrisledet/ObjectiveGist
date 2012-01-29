@@ -24,3 +24,4 @@
 
 #import "Gist.h"
 #import "GistFile.h"
+#import "GistAPI.h"

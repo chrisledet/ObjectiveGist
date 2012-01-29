@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 
 #import "Gist.h"
+#import "GistAPI.h"
 
 @interface Gist()
 
@@ -33,12 +34,6 @@
 - (NSArray*)setGistFilesFromDictionary:(NSDictionary*)dictionary;
 - (void)mapDictionary:(NSDictionary*)dictionary;
 
-/* Class methods */
-- (NSURL*)gistApiURL:(NSString*)gistId;
-- (NSURL*)deleteGistApiURL:(NSString*)accessToken;
-- (NSURL*)createGistApiURL:(NSString*)accessToken;
-- (NSData*) sendHTTPRequest:(NSURL*)url withHTTPBody:(NSData*)httpData AndHTTPMethod:(NSString*)httpMethod;
-
 @end
 
 @implementation Gist
@@ -46,33 +41,20 @@
 @synthesize apiURL, htmlURL, gitPullURL, gitPushURL, createdAt, updatedAt, files;
 @synthesize gistId, gistDescription, isPublic, numberOfComments, userLogin, isFork;
 
-- (void)dealloc
-{
-    [gistId release];
-    [apiURL release];
-    [htmlURL release];
-    [gitPullURL release];
-    [gitPushURL release];
-    [createdAt release];
-    [files release];
-    [gistDescription release];
-    [userLogin release];
-    [super dealloc];
-}
 
 - (id)initWithId:(NSString*)aGistId;
 {
     SBJsonParser* parser = [[SBJsonParser alloc] init];
-    NSData* jsonData = [NSData dataWithContentsOfURL:[self gistApiURL:aGistId]];
+    NSData* jsonData = [NSData dataWithContentsOfURL:[GistAPI singleGistURL:aGistId]];
     NSDictionary* jsonDictionary = [parser objectWithData:jsonData];
-    [parser release];
     return [[Gist alloc] initFromDictionary:jsonDictionary];
 }
 
 - (id)initWithFiles:(NSArray *)aFiles
 {
     self = [super init];
-    if (self) files = aFiles;
+    if (self)
+        files = aFiles;
     return self;
 }
 
@@ -80,9 +62,8 @@
 {
     self = [super init];
     
-    if (self) {
+    if (self)
         [self mapDictionary:gistDictionary];
-    }
 
     return self;
 }
@@ -100,42 +81,19 @@
     [dictionary setObject:fileDictionary forKey:@"files"];
     
     NSData* postData = [[dictionary JSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    NSData* returnData = [self sendHTTPRequest:[self createGistApiURL:accessToken] withHTTPBody:postData AndHTTPMethod:@"POST"];
-    [returnData retain];
+    NSData* returnData =
+        [GistAPI sendHTTPRequest:[GistAPI createGistURL:accessToken] withHTTPBody:postData AndHTTPMethod:@"POST"];
     
     SBJsonParser* parser = [[SBJsonParser alloc] init];
     NSDictionary* jsonDictionary = [parser objectWithData:returnData];
     
     [self mapDictionary:jsonDictionary];
     
-    [parser release];
-    [returnData release];
 }
 
 - (void)destroy:(NSString*)accessToken
 {
-    [self sendHTTPRequest:[self deleteGistApiURL:accessToken] withHTTPBody:nil AndHTTPMethod:@"DELETE"];
-}
-
-/* Private methods */
-
-- (NSURL*)gistApiURL:(NSString*)aGistId
-{
-    return [NSURL URLWithString:
-                [NSString stringWithFormat:@"https://api.github.com/gists/%@", aGistId]];
-}
-
-- (NSURL*)deleteGistApiURL:(NSString*)accessToken
-{
-    NSLog(@"Posting to https://api.github.com/gists/%@?access_token=%@", gistId, accessToken);
-    return [NSURL URLWithString:
-                [NSString stringWithFormat:@"https://api.github.com/gists/%@?access_token=%@", gistId, accessToken]];
-}
-
-- (NSURL*)createGistApiURL:(NSString*)accessToken
-{
-    return [NSURL URLWithString:
-                [NSString stringWithFormat:@"https://api.github.com/gists?access_token=%@", accessToken]];
+    [GistAPI sendHTTPRequest:[GistAPI editGistURL:gistId withAccessToken:accessToken] withHTTPBody:nil AndHTTPMethod:@"DELETE"];
 }
 
 - (NSArray*)setGistFilesFromDictionary:(NSDictionary*)dictionary
@@ -144,31 +102,10 @@
     for (NSString* filename in dictionary) {
         GistFile* gistFile = [[GistFile alloc] initFromDictionary:[dictionary objectForKey:filename]];
         [tempGistFile addObject:gistFile];
-        [gistFile release];
     }
-    return [tempGistFile autorelease];
+    return tempGistFile;
 }
 
-- (NSData*)sendHTTPRequest:(NSURL*)url withHTTPBody:(NSData*)httpData AndHTTPMethod:(NSString*)httpMethod
-{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:url];
-    [request setHTTPMethod:httpMethod];
-    [request setHTTPBody:httpData];
-    
-    NSError* error = nil;
-    NSHTTPURLResponse* response = nil;
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    if (error) {
-        NSLog(@"Error occurred while creating gist: %@", error);
-        [error release];
-    }
-    
-    [request release];
-    
-    return [returnData autorelease];
-}
 
 - (void)mapDictionary:(NSDictionary*)dictionary
 {
@@ -179,7 +116,7 @@
     numberOfComments = [[dictionary objectForKey:@"comments"] intValue];
     createdAt  = [NSDate dateWithString:[dictionary objectForKey:@"created_at"]];
     updatedAt  = [NSDate dateWithString:[dictionary objectForKey:@"updated_at"]];
-    apiURL     = [self gistApiURL:gistId];
+    apiURL     = [GistAPI singleGistURL:gistId];
     htmlURL    = [NSURL URLWithString:[dictionary objectForKey:@"html_url"]];
     gitPullURL = [NSURL URLWithString:[dictionary objectForKey:@"git_pull_url"]];
     gitPushURL = [NSURL URLWithString:[dictionary objectForKey:@"git_push_url"]];

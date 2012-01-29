@@ -1,5 +1,5 @@
 //
-//  Gist.h
+//  GistAPI.h
 //  ObjectiveGist
 //
 //  Copyright (c) 2012 Chris Ledet
@@ -23,45 +23,17 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "SBJson.h"
-#import "GistFile.h"
 
-@interface Gist : NSObject {
+@interface GistAPI : NSObject
 
-@private
-    NSURL* apiURL;
-    NSString* gistId;
-    NSString* gistDescription;
-    NSURL* htmlURL;
-    NSURL* gitPullURL;
-    NSURL* gitPushURL;
-    NSDate* createdAt;
-    NSDate* updateAt;
-    NSArray* files;
-    NSString* userLogin;
-    NSUInteger numberOfComments;
-    BOOL isPublic;
-    BOOL isFork;
-}
++ (NSString*) singleGistURLString:(NSString*)gistId;
++ (NSString*) createGistURLString:(NSString*)accessToken;
++ (NSString*) editGistURLString:(NSString*)gistId withAccessToken:(NSString*)accessToken;
 
-@property (nonatomic, strong) NSURL* apiURL;
-@property (nonatomic, strong) NSString* gistId;
-@property (nonatomic, strong) NSString* gistDescription;
-@property (nonatomic, strong) NSURL* htmlURL;
-@property (nonatomic, strong) NSURL* gitPullURL;
-@property (nonatomic, strong) NSURL* gitPushURL;
-@property (nonatomic, strong) NSDate* createdAt;
-@property (nonatomic, strong) NSDate* updatedAt;
-@property (nonatomic, strong) NSArray* files;
-@property (nonatomic, strong) NSString* userLogin;
-@property (nonatomic, assign) NSUInteger numberOfComments;
-@property (nonatomic, assign) BOOL isPublic;
-@property (nonatomic, assign) BOOL isFork;
++ (NSURL*) singleGistURL:(NSString*)gistId;
++ (NSURL*) createGistURL:(NSString*)accessToken;
++ (NSURL*) editGistURL:(NSString*)gistId withAccessToken:(NSString*)accessToken;
 
-- (id)initWithId:(NSString*)gistId;
-- (id)initWithFiles:(NSArray*)files;
-
-- (void)publish:(NSString*)accessToken;
-- (void)destroy:(NSString*)accessToken;
++ (NSData*)sendHTTPRequest:(NSURL*)url withHTTPBody:(NSData*)httpData AndHTTPMethod:(NSString*)httpMethod;
 
 @end

@@ -31,23 +31,16 @@
     NSString* accessToken;
 }
 
-@property (nonatomic, retain) Gist* gist;
-@property (nonatomic, retain) NSString* gistId;
-@property (nonatomic, retain) NSString* forkedGistId;
-@property (nonatomic, retain) NSString* accessToken;
+@property (nonatomic, strong) Gist* gist;
+@property (nonatomic, strong) NSString* gistId;
+@property (nonatomic, strong) NSString* forkedGistId;
+@property (nonatomic, strong) NSString* accessToken;
 
 @end
 
 @implementation GistTests
 
 @synthesize gist, gistId, forkedGistId, accessToken;
-
--(void)dealloc
-{
-    [accessToken release];
-    [gist release];
-    [super dealloc];
-}
 
 - (void)setUp
 {
@@ -148,7 +141,6 @@
     NSString* privateGistId = [newGist.gistId copy];
     [newGist destroy:accessToken];
     newGist = [[Gist alloc] initWithId:privateGistId];
-    [privateGistId release];
     STAssertNil(newGist.gistId, @"Gist should be nil");
 }
 

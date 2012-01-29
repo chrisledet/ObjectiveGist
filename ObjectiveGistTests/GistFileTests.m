@@ -30,9 +30,9 @@
     NSString* forkedGistId;
 }
 
-@property (nonatomic, retain) Gist* gist;
-@property (nonatomic, retain) NSString* gistId;
-@property (nonatomic, retain) NSString* forkedGistId;
+@property (nonatomic, strong) Gist* gist;
+@property (nonatomic, strong) NSString* gistId;
+@property (nonatomic, strong) NSString* forkedGistId;
 
 @end
 

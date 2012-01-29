@@ -6,6 +6,10 @@ Objective-C wrapper for the Gist API.
 
 Just copy the files from the `Classes` and `Library` directories into your Xcode project. In the future I will provide a static library to download.
 
+## ARC Compatibility
+
+As of version 0.0.3, ObjectiveGist is ARC compliant.
+
 ## Basic Usage
 
 ### Reading Gists

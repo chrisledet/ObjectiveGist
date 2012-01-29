@@ -36,11 +36,11 @@ extern NSString *const kDefaultFilename;
     NSString* language;
 }
 
-@property (nonatomic, retain) NSString* filename;
+@property (nonatomic, strong) NSString* filename;
 @property (nonatomic, assign) NSUInteger filesize;
-@property (nonatomic, retain) NSURL* rawURL;
-@property (nonatomic, retain) NSString* content;
-@property (nonatomic, retain) NSString* language;
+@property (nonatomic, strong) NSURL* rawURL;
+@property (nonatomic, strong) NSString* content;
+@property (nonatomic, strong) NSString* language;
 
 /* initializers */
 - (id)initWithContent:(NSString*)content;

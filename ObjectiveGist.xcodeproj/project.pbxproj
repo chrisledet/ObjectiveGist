@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8384588014D3771C005B6220 /* GistApiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384587F14D3771C005B6220 /* GistApiTests.m */; };
+		8384588314D379A1005B6220 /* GistAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8384588114D379A1005B6220 /* GistAPI.h */; };
+		8384588414D379A1005B6220 /* GistAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384588214D379A1005B6220 /* GistAPI.m */; };
+		8384588514D379A1005B6220 /* GistAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384588214D379A1005B6220 /* GistAPI.m */; };
 		83985B0E14C26457009C17F1 /* ObjectiveGist-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 83985B0D14C26457009C17F1 /* ObjectiveGist-Prefix.pch */; };
 		839D132C14C1668B005F2D99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839D132B14C1668B005F2D99 /* Cocoa.framework */; };
 		839D133E14C1668B005F2D99 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839D133D14C1668B005F2D99 /* SenTestingKit.framework */; };
@@ -22,44 +26,59 @@
 		839D136114C16B80005F2D99 /* ObjectiveGist.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D135F14C16B80005F2D99 /* ObjectiveGist.h */; };
 		839D137914C16F41005F2D99 /* SingleGist.json in Resources */ = {isa = PBXBuildFile; fileRef = 839D137814C16F41005F2D99 /* SingleGist.json */; };
 		839D137C14C17503005F2D99 /* GistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D137B14C17503005F2D99 /* GistTests.m */; };
-		839D13B114C17ADB005F2D99 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139814C17ADB005F2D99 /* SBJsonWriter.m */; };
-		839D13B214C17ADB005F2D99 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139814C17ADB005F2D99 /* SBJsonWriter.m */; };
+		839D13B114C17ADB005F2D99 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139814C17ADB005F2D99 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13B214C17ADB005F2D99 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139814C17ADB005F2D99 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13B314C17ADB005F2D99 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D139914C17ADB005F2D99 /* SBJsonWriter.h */; };
-		839D13B414C17ADB005F2D99 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139A14C17ADB005F2D99 /* SBJsonUTF8Stream.m */; };
-		839D13B514C17ADB005F2D99 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139A14C17ADB005F2D99 /* SBJsonUTF8Stream.m */; };
+		839D13B414C17ADB005F2D99 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139A14C17ADB005F2D99 /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13B514C17ADB005F2D99 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139A14C17ADB005F2D99 /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13B614C17ADB005F2D99 /* SBJsonUTF8Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D139B14C17ADB005F2D99 /* SBJsonUTF8Stream.h */; };
-		839D13B714C17ADB005F2D99 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139C14C17ADB005F2D99 /* SBJsonTokeniser.m */; };
-		839D13B814C17ADB005F2D99 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139C14C17ADB005F2D99 /* SBJsonTokeniser.m */; };
+		839D13B714C17ADB005F2D99 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139C14C17ADB005F2D99 /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13B814C17ADB005F2D99 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139C14C17ADB005F2D99 /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13B914C17ADB005F2D99 /* SBJsonTokeniser.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D139D14C17ADB005F2D99 /* SBJsonTokeniser.h */; };
-		839D13BA14C17ADB005F2D99 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139E14C17ADB005F2D99 /* SBJsonStreamWriterState.m */; };
-		839D13BB14C17ADB005F2D99 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139E14C17ADB005F2D99 /* SBJsonStreamWriterState.m */; };
+		839D13BA14C17ADB005F2D99 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139E14C17ADB005F2D99 /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13BB14C17ADB005F2D99 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139E14C17ADB005F2D99 /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13BC14C17ADB005F2D99 /* SBJsonStreamWriterState.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D139F14C17ADB005F2D99 /* SBJsonStreamWriterState.h */; };
-		839D13BD14C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A014C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m */; };
-		839D13BE14C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A014C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m */; };
+		839D13BD14C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A014C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13BE14C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A014C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13BF14C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13A114C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.h */; };
-		839D13C014C17ADB005F2D99 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A214C17ADB005F2D99 /* SBJsonStreamWriter.m */; };
-		839D13C114C17ADB005F2D99 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A214C17ADB005F2D99 /* SBJsonStreamWriter.m */; };
+		839D13C014C17ADB005F2D99 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A214C17ADB005F2D99 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13C114C17ADB005F2D99 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A214C17ADB005F2D99 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13C214C17ADB005F2D99 /* SBJsonStreamWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13A314C17ADB005F2D99 /* SBJsonStreamWriter.h */; };
-		839D13C314C17ADB005F2D99 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A414C17ADB005F2D99 /* SBJsonStreamParserState.m */; };
-		839D13C414C17ADB005F2D99 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A414C17ADB005F2D99 /* SBJsonStreamParserState.m */; };
+		839D13C314C17ADB005F2D99 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A414C17ADB005F2D99 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13C414C17ADB005F2D99 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A414C17ADB005F2D99 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13C514C17ADB005F2D99 /* SBJsonStreamParserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13A514C17ADB005F2D99 /* SBJsonStreamParserState.h */; };
-		839D13C614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m */; };
-		839D13C714C17ADB005F2D99 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m */; };
+		839D13C614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13C714C17ADB005F2D99 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13C814C17ADB005F2D99 /* SBJsonStreamParserAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13A714C17ADB005F2D99 /* SBJsonStreamParserAdapter.h */; };
-		839D13C914C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A814C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m */; };
-		839D13CA14C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A814C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m */; };
+		839D13C914C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A814C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13CA14C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A814C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13CB14C17ADB005F2D99 /* SBJsonStreamParserAccumulator.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13A914C17ADB005F2D99 /* SBJsonStreamParserAccumulator.h */; };
-		839D13CC14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AA14C17ADB005F2D99 /* SBJsonStreamParser.m */; };
-		839D13CD14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AA14C17ADB005F2D99 /* SBJsonStreamParser.m */; };
+		839D13CC14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AA14C17ADB005F2D99 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13CD14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AA14C17ADB005F2D99 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13CE14C17ADB005F2D99 /* SBJsonStreamParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13AB14C17ADB005F2D99 /* SBJsonStreamParser.h */; };
-		839D13CF14C17ADB005F2D99 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AC14C17ADB005F2D99 /* SBJsonParser.m */; };
-		839D13D014C17ADB005F2D99 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AC14C17ADB005F2D99 /* SBJsonParser.m */; };
+		839D13CF14C17ADB005F2D99 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AC14C17ADB005F2D99 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13D014C17ADB005F2D99 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AC14C17ADB005F2D99 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13D114C17ADB005F2D99 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13AD14C17ADB005F2D99 /* SBJsonParser.h */; };
 		839D13D214C17ADB005F2D99 /* SBJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13AE14C17ADB005F2D99 /* SBJson.h */; };
-		839D13D314C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; };
-		839D13D414C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; };
+		839D13D314C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		839D13D414C17ADB005F2D99 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		839D13D514C17ADC005F2D99 /* NSObject+SBJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 839D13B014C17ADB005F2D99 /* NSObject+SBJson.h */; };
 		83CA2CDC14C3CC9B00AD7D0C /* GistFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */; };
+		83CA2CE514C4130100AD7D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CA2CE414C4130100AD7D0C /* Foundation.framework */; };
+		83CA2CF014C413AE00AD7D0C /* Gist.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D135614C167F6005F2D99 /* Gist.m */; };
+		83CA2CF114C413B100AD7D0C /* GistFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D135B14C16B30005F2D99 /* GistFile.m */; };
+		83CA2CF214C413E000AD7D0C /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139814C17ADB005F2D99 /* SBJsonWriter.m */; };
+		83CA2CF314C413E000AD7D0C /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139A14C17ADB005F2D99 /* SBJsonUTF8Stream.m */; };
+		83CA2CF414C413E000AD7D0C /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139C14C17ADB005F2D99 /* SBJsonTokeniser.m */; };
+		83CA2CF514C413E000AD7D0C /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D139E14C17ADB005F2D99 /* SBJsonStreamWriterState.m */; };
+		83CA2CF614C413E000AD7D0C /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A014C17ADB005F2D99 /* SBJsonStreamWriterAccumulator.m */; };
+		83CA2CF714C413E000AD7D0C /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A214C17ADB005F2D99 /* SBJsonStreamWriter.m */; };
+		83CA2CF814C413E000AD7D0C /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A414C17ADB005F2D99 /* SBJsonStreamParserState.m */; };
+		83CA2CF914C413E000AD7D0C /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A614C17ADB005F2D99 /* SBJsonStreamParserAdapter.m */; };
+		83CA2CFA14C413E000AD7D0C /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13A814C17ADB005F2D99 /* SBJsonStreamParserAccumulator.m */; };
+		83CA2CFB14C413E000AD7D0C /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AA14C17ADB005F2D99 /* SBJsonStreamParser.m */; };
+		83CA2CFC14C413E000AD7D0C /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AC14C17ADB005F2D99 /* SBJsonParser.m */; };
+		83CA2CFD14C413E000AD7D0C /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D13AF14C17ADB005F2D99 /* NSObject+SBJson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +91,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		83CA2CE014C4130100AD7D0C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8384587F14D3771C005B6220 /* GistApiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistApiTests.m; sourceTree = "<group>"; };
+		8384588114D379A1005B6220 /* GistAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistAPI.h; sourceTree = "<group>"; };
+		8384588214D379A1005B6220 /* GistAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistAPI.m; sourceTree = "<group>"; };
 		83985B0D14C26457009C17F1 /* ObjectiveGist-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjectiveGist-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		839D132814C1668B005F2D99 /* libObjectiveGist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjectiveGist.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		839D132B14C1668B005F2D99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -114,6 +148,8 @@
 		839D13B014C17ADB005F2D99 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistFileTests.m; sourceTree = "<group>"; };
 		83CA2CDD14C3CD2200AD7D0C /* TestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
+		83CA2CE214C4130100AD7D0C /* ObjectiveGistSample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveGistSample; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CA2CE414C4130100AD7D0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +168,14 @@
 				839D133E14C1668B005F2D99 /* SenTestingKit.framework in Frameworks */,
 				839D133F14C1668B005F2D99 /* Cocoa.framework in Frameworks */,
 				839D134214C1668B005F2D99 /* libObjectiveGist.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83CA2CDF14C4130100AD7D0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83CA2CE514C4130100AD7D0C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +199,7 @@
 			children = (
 				839D132814C1668B005F2D99 /* libObjectiveGist.a */,
 				839D133C14C1668B005F2D99 /* ObjectiveGistTests.octest */,
+				83CA2CE214C4130100AD7D0C /* ObjectiveGistSample */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,6 +209,7 @@
 			children = (
 				839D132B14C1668B005F2D99 /* Cocoa.framework */,
 				839D133D14C1668B005F2D99 /* SenTestingKit.framework */,
+				83CA2CE414C4130100AD7D0C /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,6 +229,7 @@
 				83CA2CDD14C3CD2200AD7D0C /* TestHelper.h */,
 				839D137B14C17503005F2D99 /* GistTests.m */,
 				83CA2CDB14C3CC9B00AD7D0C /* GistFileTests.m */,
+				8384587F14D3771C005B6220 /* GistApiTests.m */,
 				839D137714C16ECD005F2D99 /* Resources */,
 				839D134414C1668B005F2D99 /* Supporting Files */,
 			);
@@ -206,6 +253,8 @@
 				839D135614C167F6005F2D99 /* Gist.m */,
 				839D135A14C16B30005F2D99 /* GistFile.h */,
 				839D135B14C16B30005F2D99 /* GistFile.m */,
+				8384588114D379A1005B6220 /* GistAPI.h */,
+				8384588214D379A1005B6220 /* GistAPI.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -274,6 +323,7 @@
 				839D13D214C17ADB005F2D99 /* SBJson.h in Headers */,
 				839D13D514C17ADC005F2D99 /* NSObject+SBJson.h in Headers */,
 				83985B0E14C26457009C17F1 /* ObjectiveGist-Prefix.pch in Headers */,
+				8384588314D379A1005B6220 /* GistAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +366,23 @@
 			productReference = 839D133C14C1668B005F2D99 /* ObjectiveGistTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		83CA2CE114C4130100AD7D0C /* ObjectiveGistSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83CA2CED14C4130100AD7D0C /* Build configuration list for PBXNativeTarget "ObjectiveGistSample" */;
+			buildPhases = (
+				83CA2CDE14C4130100AD7D0C /* Sources */,
+				83CA2CDF14C4130100AD7D0C /* Frameworks */,
+				83CA2CE014C4130100AD7D0C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjectiveGistSample;
+			productName = ObjectiveGistSample;
+			productReference = 83CA2CE214C4130100AD7D0C /* ObjectiveGistSample */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,6 +406,7 @@
 			targets = (
 				839D132714C1668B005F2D99 /* ObjectiveGist */,
 				839D133B14C1668B005F2D99 /* ObjectiveGistTests */,
+				83CA2CE114C4130100AD7D0C /* ObjectiveGistSample */,
 			);
 		};
 /* End PBXProject section */
@@ -390,6 +458,7 @@
 				839D13CC14C17ADB005F2D99 /* SBJsonStreamParser.m in Sources */,
 				839D13CF14C17ADB005F2D99 /* SBJsonParser.m in Sources */,
 				839D13D314C17ADB005F2D99 /* NSObject+SBJson.m in Sources */,
+				8384588414D379A1005B6220 /* GistAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +482,29 @@
 				839D13D014C17ADB005F2D99 /* SBJsonParser.m in Sources */,
 				839D13D414C17ADB005F2D99 /* NSObject+SBJson.m in Sources */,
 				83CA2CDC14C3CC9B00AD7D0C /* GistFileTests.m in Sources */,
+				8384588014D3771C005B6220 /* GistApiTests.m in Sources */,
+				8384588514D379A1005B6220 /* GistAPI.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83CA2CDE14C4130100AD7D0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83CA2CF014C413AE00AD7D0C /* Gist.m in Sources */,
+				83CA2CF114C413B100AD7D0C /* GistFile.m in Sources */,
+				83CA2CF214C413E000AD7D0C /* SBJsonWriter.m in Sources */,
+				83CA2CF314C413E000AD7D0C /* SBJsonUTF8Stream.m in Sources */,
+				83CA2CF414C413E000AD7D0C /* SBJsonTokeniser.m in Sources */,
+				83CA2CF514C413E000AD7D0C /* SBJsonStreamWriterState.m in Sources */,
+				83CA2CF614C413E000AD7D0C /* SBJsonStreamWriterAccumulator.m in Sources */,
+				83CA2CF714C413E000AD7D0C /* SBJsonStreamWriter.m in Sources */,
+				83CA2CF814C413E000AD7D0C /* SBJsonStreamParserState.m in Sources */,
+				83CA2CF914C413E000AD7D0C /* SBJsonStreamParserAdapter.m in Sources */,
+				83CA2CFA14C413E000AD7D0C /* SBJsonStreamParserAccumulator.m in Sources */,
+				83CA2CFB14C413E000AD7D0C /* SBJsonStreamParser.m in Sources */,
+				83CA2CFC14C413E000AD7D0C /* SBJsonParser.m in Sources */,
+				83CA2CFD14C413E000AD7D0C /* NSObject+SBJson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +578,7 @@
 		839D134F14C1668B005F2D99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGist-Prefix.pch";
@@ -497,6 +590,7 @@
 		839D135014C1668B005F2D99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGist-Prefix.pch";
 				GCC_STRICT_ALIASING = YES;
@@ -507,6 +601,7 @@
 		839D135214C1668B005F2D99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGist-Prefix.pch";
@@ -519,12 +614,31 @@
 		839D135314C1668B005F2D99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGist-Prefix.pch";
 				INFOPLIST_FILE = "ObjectiveGistTests/ObjectiveGistTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		83CA2CEE14C4130100AD7D0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjectiveGistSample/ObjectiveGistSample-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		83CA2CEF14C4130100AD7D0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjectiveGistSample/ObjectiveGistSample-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -554,6 +668,15 @@
 			buildConfigurations = (
 				839D135214C1668B005F2D99 /* Debug */,
 				839D135314C1668B005F2D99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CA2CED14C4130100AD7D0C /* Build configuration list for PBXNativeTarget "ObjectiveGistSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CA2CEE14C4130100AD7D0C /* Debug */,
+				83CA2CEF14C4130100AD7D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
